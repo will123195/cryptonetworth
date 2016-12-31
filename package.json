@@ -23,7 +23,9 @@
     "browserify": "^13.1.1",
     "express": "^4.14.0",
     "handlebars": "^4.0.6",
-    "less": "^2.7.1"
+    "idiot": "^2.0.0",
+    "less": "^2.7.1",
+    "memoizee": "^0.4.1"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

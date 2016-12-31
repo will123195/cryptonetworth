@@ -1,0 +1,40 @@
+{
+  "name": "semantic-ui-table",
+  "description": "Table - Semantic UI",
+  "homepage": "http://www.semantic-ui.com",
+  "author": {
+    "name": "Jack Lukic",
+    "web": "http://www.jacklukic.com"
+  },
+  "ignore": [
+    "docs",
+    "node",
+    "server",
+    "spec",
+    "src",
+    "test"
+  ],
+  "keywords": [
+    "semantic",
+    "ui",
+    "css3",
+    "framework"
+  ],
+  "license": [
+    "http://semantic-ui.mit-license.org/"
+  ],
+  "main": [
+    "table.css"
+  ],
+  "version": "2.2.6",
+  "_release": "2.2.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.2.6",
+    "commit": "cb2e5a216a515e76757ed30ccd1518a351431bbf"
+  },
+  "_source": "https://github.com/Semantic-Org/UI-Table.git",
+  "_target": "~2.2.6",
+  "_originalSource": "semantic-ui-table",
+  "_direct": true
+}

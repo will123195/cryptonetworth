@@ -1,3 +1,36 @@
-<div class="title">
-  {{title}}
+
+<div class="my-net-worth">
 </div>
+
+<table class="ui very basic table">
+  <thead>
+  <tr>
+    <th>Rank</th>
+    <th>Currency</th>
+    <th class="right aligned">Price USD</th>
+    <th class="right aligned">Change (7d)</th>
+    <th class="center aligned">Qty</th>
+    <th class="center aligned">Value</th>
+    <th class="right aligned">Supply</th>
+    <th class="right aligned">Market Cap</th>
+  </tr>
+  </thead>
+  <tbody>
+{{#each ticker}}
+  <tr class="crypto {{symbol}}" data-symbol="{{symbol}}" data-price="{{price}}">
+    <td>{{rank}}</td>
+    <td>{{name}}</td>
+    <td class="right aligned bold">${{price}}</td>
+    <td class="right aligned {{delta}}">{{change}}</td>
+    <td class="right aligned input">
+      <input type="number" class="qty" />
+    </td>
+    <td class="right aligned input">
+      <input type="text" class="total" readonly="readonly" />
+    </td>
+    <td class="right aligned">{{supply}} {{symbol}}</td>
+    <td class="right aligned">${{market_cap}}</td>
+  </tr>
+{{/each}}
+  </tbody>
+</table>
