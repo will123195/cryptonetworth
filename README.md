@@ -1,6 +1,6 @@
 # cryptonetworth
 
-[http://cryptonetworth.com](https://cryptonetworth.com)
+[https://cryptonetworth.com](https://cryptonetworth.com)
 
 
 ### How to run the app locally
