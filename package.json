@@ -1,7 +1,7 @@
 {
   "name": "cryptonetworth",
   "version": "1.0.0",
-  "description": "",
+  "description": "A web app to track your crypto-currency net worth",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/will123195/cryptonetworth.git"
   },
   "author": "will123195",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/will123195/cryptonetworth/issues"
   },
