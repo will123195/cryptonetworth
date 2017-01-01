@@ -56,8 +56,18 @@ function loadQuantities() {
   updateGrandTotal()
 }
 
+function hoverRow() {
+  $(this).addClass('hover')
+}
+
 $(document)
   .on('ready', loadQuantities)
   .on('change', 'input.qty', calculate)
   .on('keyup', 'input.qty', calculate)
   .on('recalc', 'input.qty', calculate)
+
+$('tr.crypto').hover(function () {
+  $(this).addClass('hover');
+}, function () {
+  $(this).removeClass('hover');
+});
