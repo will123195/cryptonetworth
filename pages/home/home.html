@@ -3,15 +3,15 @@
   Enter the quantity of your holdings to track your crypto net worth.
 </div>
 
-<table class="ui very basic table">
+<table class="ui very basic unstackable table">
   <thead>
   <tr>
-    <th>Rank</th>
-    <th>Currency</th>
-    <th class="right aligned">Price USD</th>
-    <th class="right aligned">Change (7d)</th>
-    <th class="center aligned">Qty</th>
-    <th class="center aligned">Value</th>
+    <th class="">Rank</th>
+    <th class="mobile">Currency</th>
+    <th class="right aligned">Price</th>
+    <th class="right aligned">7d</th>
+    <th class="mobile center aligned">Qty</th>
+    <th class="mobile center aligned">Value</th>
     <th class="right aligned">Supply</th>
     <th class="right aligned">Market Cap</th>
   </tr>
@@ -19,14 +19,19 @@
   <tbody>
 {{#each ticker}}
   <tr class="crypto {{symbol}}" data-symbol="{{symbol}}" data-price="{{price}}">
-    <td>{{rank}}</td>
-    <td>{{name}}</td>
-    <td class="right aligned bold">${{price}}</td>
+    <td class="">{{rank}}</td>
+    <td class="mobile">
+      {{name}}
+      <div class="bold mobile">${{price}}</div>
+    </td>
+    <td class="right aligned">
+      <span class="bold">${{price}}</span>
+    </td>
     <td class="right aligned {{delta}}">{{change}}</td>
-    <td class="right aligned input">
+    <td class="mobile center aligned input">
       <input type="number" class="qty" />
     </td>
-    <td class="right aligned input">
+    <td class="mobile center aligned input">
       <input type="text" class="total" readonly="readonly" />
     </td>
     <td class="right aligned">{{supply}} {{symbol}}</td>

@@ -1,6 +1,7 @@
 
 #page {
-  width: 1000px;
+  width: 100%;
+  max-width: 1000px;
   margin: auto;
 }
 
@@ -31,4 +32,25 @@ h1 {
   margin-bottom: 40px;
   border: 1px solid #ccc;
   font-size: 24px;
+}
+
+footer {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  margin: 100px 0;
+}
+
+@media (max-width: 1020px) {
+  #page {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 775px) {
+  td, th {
+    display: none;
+    &.mobile {
+      display: table-cell;
+    }
+  }
 }
