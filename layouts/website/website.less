@@ -48,6 +48,10 @@ footer {
   margin: 100px 0;
 }
 
+div.mobile.only {
+  display: none;
+}
+
 @media (max-width: 1020px) {
   #page {
     padding: 0 10px;
@@ -60,6 +64,9 @@ footer {
     &.mobile {
       display: table-cell;
     }
+  }
+  div.mobile.only {
+    display: block;
   }
   tr .qty-input input {
     border: 1px solid #eee;

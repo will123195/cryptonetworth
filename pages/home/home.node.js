@@ -1,5 +1,6 @@
 const coinMarketCap = require('../../lib/coinMarketCap')
 const cache = require('memoizee')
+const formatUSD = require('../../lib/formatUSD')
 
 const getTicker = cache(() => coinMarketCap.get('/ticker'), {
   promise: true,
@@ -18,6 +19,13 @@ function shortenLargeNumber(num, digits) {
   return num;
 }
 
+function formatPrice(price) {
+  if (Number(price) > 1) {
+    return formatUSD(price)
+  }
+  return '$' + Number(price).toPrecision(3)
+}
+
 module.exports = function ($) {
   $.layout('website')
   getTicker().then(ticker => {
@@ -26,14 +34,12 @@ module.exports = function ($) {
         rank: row.rank,
         name: row.name,
         symbol: row.symbol,
-        price: Number(row.price_usd).toPrecision(4),
+        price: row.price_usd,
+        priceFormatted: formatPrice(row.price_usd),
         supply: shortenLargeNumber(row.available_supply, 1),
         market_cap: shortenLargeNumber(row.market_cap_usd, 1),
         delta: 'negative',
         change: row.percent_change_7d + '%'
-      }
-      if (data.price > 1) {
-        data.price = Number(data.price).toFixed(2)
       }
       if (Number(row.percent_change_7d) > 0) {
         data.change = '+' + row.percent_change_7d + '%'

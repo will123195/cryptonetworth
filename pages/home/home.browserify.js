@@ -1,9 +1,4 @@
-function formatUSD(amount) {
-  return amount.toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'USD'
-  })
-}
+var formatUSD = require('../../lib/formatUSD')
 
 function calculate(e) {
   var $this = $(this)
