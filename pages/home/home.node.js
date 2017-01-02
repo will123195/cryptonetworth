@@ -27,6 +27,7 @@ function formatPrice(price) {
 }
 
 module.exports = function ($) {
+  $.title = 'My Crypto-Currency Net Worth'
   $.layout('website')
   getTicker().then(ticker => {
     $.ticker = ticker.slice(0, 150).map(row => {
