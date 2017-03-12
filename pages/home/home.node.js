@@ -2,7 +2,7 @@ const coinMarketCap = require('../../lib/coinMarketCap')
 const cache = require('memoizee')
 const formatUSD = require('../../lib/formatUSD')
 
-const getTicker = cache(() => coinMarketCap.get('/ticker/'), {
+const getTicker = cache(() => coinMarketCap.get('/ticker/?limit=150'), {
   promise: true,
   maxAge: 1000 * 60 // 1 minute
 })
@@ -30,7 +30,7 @@ module.exports = function ($) {
   $.title = 'My Crypto-Currency Net Worth'
   $.layout('website')
   getTicker().then(ticker => {
-    $.ticker = ticker.slice(0, 150).map(row => {
+    $.ticker = ticker.map(row => {
       const data = {
         rank: row.rank,
         name: row.name,
