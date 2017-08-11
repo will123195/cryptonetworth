@@ -33,6 +33,7 @@ module.exports = function ($) {
     $.ticker = ticker.map(row => {
       const data = {
         rank: row.rank,
+        id: row.id,
         name: row.name,
         symbol: row.symbol,
         price: row.price_usd,
