@@ -2,7 +2,7 @@ const coinMarketCap = require('../../lib/coinMarketCap')
 const cache = require('memoizee')
 const formatUSD = require('../../lib/formatUSD')
 
-const getTicker = cache(() => coinMarketCap.get('/ticker/?limit=150'), {
+const getTicker = cache(() => coinMarketCap.get('/ticker/?limit=250'), {
   promise: true,
   maxAge: 1000 * 60 // 1 minute
 })
