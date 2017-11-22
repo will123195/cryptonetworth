@@ -51,8 +51,9 @@ function loadQuantities() {
   updateGrandTotal()
 }
 
-function hoverRow() {
-  $(this).addClass('hover')
+function toggleTotal() {
+  $('.my-net-worth').toggle()
+  $('.my-net-worth-alt').toggle()
 }
 
 $(document)
@@ -60,6 +61,8 @@ $(document)
   .on('change', 'input.qty', calculate)
   .on('keyup', 'input.qty', calculate)
   .on('recalc', 'input.qty', calculate)
+  .on('click', '.my-net-worth', toggleTotal)
+  .on('click', '.my-net-worth-alt', toggleTotal)
 
 $('tr.crypto').hover(function () {
   $(this).addClass('hover');
