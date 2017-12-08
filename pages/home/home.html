@@ -24,7 +24,11 @@
   <tr class="crypto {{symbol}}" data-symbol="{{symbol}}" data-price="{{price}}">
     <td class="">{{rank}}</td>
     <td class="mobile">
+      {{#if id}}
       <a href="https://coinmarketcap.com/currencies/{{id}}/">{{name}}</a>
+      {{else}}
+        {{name}}
+      {{/if}}
       <div class="bold mobile only">{{priceFormatted}}</div>
     </td>
     <td class="right aligned">
@@ -37,8 +41,20 @@
     <td class="mobile center aligned input">
       <input type="text" class="total" readonly="readonly" />
     </td>
-    <td class="right aligned">{{supply}} {{symbol}}</td>
-    <td class="right aligned">${{market_cap}}</td>
+    <td class="right aligned">
+      {{#if supply}}
+        {{supply}} {{symbol}}
+      {{else}}
+        -
+      {{/if}}
+    </td>
+    <td class="right aligned">
+      {{#if market_cap}}
+        ${{market_cap}}
+      {{else}}
+        -
+      {{/if}}
+    </td>
   </tr>
 {{/each}}
   </tbody>
