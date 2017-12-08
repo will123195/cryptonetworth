@@ -86,6 +86,7 @@ module.exports = function ($) {
       if (data.symbol === 'BCH') {
         data.name = 'Bcash'
       }
+      $.ticker.push(data)
       // calculate bitcoin pre-fork values (i.e. casascius)
       if (data.symbol === 'BTC') {
         const btcPreFork = getBTCPreForkValues(ticker);
@@ -99,7 +100,6 @@ module.exports = function ($) {
           change: btcPreFork.percent_change_7d + '%'
         })
       }
-      $.ticker.push(data)
     })
     $.render()
   })
