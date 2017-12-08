@@ -92,7 +92,7 @@ module.exports = function ($) {
         $.ticker.push({
           rank: '-',
           name: 'Bitcoin (Pre-fork)',
-          symbol: 'BTC+BCH+BTG',
+          symbol: 'BTC_BCH_BTG',
           price: btcPreFork.price_usd,
           priceFormatted: formatPrice(btcPreFork.price_usd),
           delta: btcPreFork.delta,
