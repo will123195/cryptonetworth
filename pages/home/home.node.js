@@ -91,7 +91,7 @@ module.exports = function ($) {
       if (data.symbol === 'BTC') {
         const btcPreFork = getBTCPreForkValues(ticker);
         $.ticker.push({
-          rank: '-',
+          rank: '',
           name: 'Bitcoin (Pre-fork)',
           symbol: 'BTC_BCH_BTG',
           price: btcPreFork.price_usd,
