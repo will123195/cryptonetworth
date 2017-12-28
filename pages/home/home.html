@@ -33,7 +33,9 @@
       <span class="mobile only rank">#{{rank}}</span>
       {{/if}}
       <div class="bold mobile only">{{priceFormatted}}</div>
+      {{#if delta}}
       <div class="mobile only {{delta}}">{{change}} <i>7d</i></div>
+      {{/if}}
     </td>
     <td class="right aligned">
       <span class="bold">{{priceFormatted}}</span>
