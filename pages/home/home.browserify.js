@@ -32,11 +32,11 @@ function saveQuantities() {
       quantities[symbol] = qty
     }
   })
-  localStorage.setItem('quantities', JSON.stringify(quantities));
+  localStorage.setItem('quantities', JSON.stringify(quantities))
 }
 
 function loadQuantities() {
-  var data = localStorage.getItem('quantities');
+  var data = localStorage.getItem('quantities')
   var quantities = {}
   if (data) {
     quantities = JSON.parse(data)
@@ -51,18 +51,59 @@ function loadQuantities() {
   updateGrandTotal()
 }
 
+function saveSettings() {
+  var settings = {
+    hideEmptyRows: $('input.toggle-visibility').prop('checked')
+  }
+
+  localStorage.setItem('settings', JSON.stringify(settings))
+}
+
+function loadSettings() {    
+  var settings = JSON.parse( localStorage.getItem('settings') ) || { hideEmptyRows: false }
+  
+  $('input.toggle-visibility').prop('checked', settings.hideEmptyRows)
+}
+
+function updateVisibility() {
+
+  var hideEmptyRows = $('input.toggle-visibility').prop('checked')
+
+  $('table tr.crypto').each(function () {
+    var qty = $(this).find('input.qty').val()
+    if (qty === ''){
+      $(this).toggle( !hideEmptyRows )
+    }
+  })
+
+  saveSettings()
+
+}
+
 function toggleTotal() {
   $('.my-net-worth').toggle()
   $('.my-net-worth-alt').toggle()
 }
 
+function loadState() {
+  loadQuantities()
+  loadSettings()
+  updateVisibility()
+}
+
+function saveState() {
+  saveQuantities()
+  saveSettings()
+}
+
 $(document)
-  .on('ready', loadQuantities)
+  .on('ready', loadState)
   .on('change', 'input.qty', calculate)
   .on('keyup', 'input.qty', calculate)
   .on('recalc', 'input.qty', calculate)
   .on('click', '.my-net-worth', toggleTotal)
   .on('click', '.my-net-worth-alt', toggleTotal)
+  .on('change', '.toggle-visibility', updateVisibility)
 
 $('tr.crypto').hover(function () {
   $(this).addClass('hover');
