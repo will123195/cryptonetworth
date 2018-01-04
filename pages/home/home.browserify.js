@@ -32,11 +32,11 @@ function saveQuantities() {
       quantities[symbol] = qty
     }
   })
-  localStorage.setItem('quantities', JSON.stringify(quantities));
+  localStorage.setItem('quantities', JSON.stringify(quantities))
 }
 
 function loadQuantities() {
-  var data = localStorage.getItem('quantities');
+  var data = localStorage.getItem('quantities')
   var quantities = {}
   if (data) {
     quantities = JSON.parse(data)
@@ -52,30 +52,32 @@ function loadQuantities() {
 }
 
 function saveSettings() {
-  var settings = $('table').data('settings');
-  localStorage.setItem('settings', JSON.stringify(settings));
+  var settings = {
+    hideEmptyRows: $('input.toggle-visibility').prop('checked')
+  }
+
+  localStorage.setItem('settings', JSON.stringify(settings))
 }
 
 function loadSettings() {    
-  var settings = JSON.parse( localStorage.getItem('settings') ) || { hideQtyless: false };
-  $('table').data('settings', settings);
+  var settings = JSON.parse( localStorage.getItem('settings') ) || { hideEmptyRows: false }
+  
+  $('input.toggle-visibility').prop('checked', settings.hideEmptyRows)
 }
 
 function updateVisibility() {
-  var settings = $('table').data('settings');
+
+  var hideEmptyRows = $('input.toggle-visibility').prop('checked')
+
   $('table tr.crypto').each(function () {
     var qty = $(this).find('input.qty').val()
     if (qty === ''){
-      $(this).toggle( !settings.hideQtyless );
+      $(this).toggle( !hideEmptyRows )
     }
   })
-}
 
-function toggleVisibility() {
-  var settings = $('table').data('settings');
-  settings.hideQtyless = !settings.hideQtyless;
-  updateVisibility();  
-  saveSettings();
+  saveSettings()
+
 }
 
 function toggleTotal() {
@@ -84,14 +86,14 @@ function toggleTotal() {
 }
 
 function loadState() {
-  loadQuantities();
-  loadSettings();
-  updateVisibility();
+  loadQuantities()
+  loadSettings()
+  updateVisibility()
 }
 
 function saveState() {
-  saveQuantities();
-  saveSettings();
+  saveQuantities()
+  saveSettings()
 }
 
 $(document)
@@ -101,7 +103,7 @@ $(document)
   .on('recalc', 'input.qty', calculate)
   .on('click', '.my-net-worth', toggleTotal)
   .on('click', '.my-net-worth-alt', toggleTotal)
-  .on('click', '.toggle-visibility', toggleVisibility)
+  .on('change', '.toggle-visibility', updateVisibility)
 
 $('tr.crypto').hover(function () {
   $(this).addClass('hover');
