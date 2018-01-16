@@ -42,7 +42,9 @@ function loadQuantities() {
     quantities = JSON.parse(data)
   }
   var keys = Object.keys(quantities)
-  if (!keys.length) return
+  if (!keys.length) return    
+  $('tr.crypto .qty').val('')
+  $('tr.crypto input.total').val('').removeAttr('data-total')
   keys.forEach(function (key) {
     var $qty = $('tr.crypto.' + key + ' .qty')
     $qty.val(quantities[key])
