@@ -38,14 +38,17 @@ function getBTCPreForkValues(ticker) {
   const btc = ticker.find(row => row.symbol === 'BTC') || defaultRow
   const bch = ticker.find(row => row.symbol === 'BCH') || defaultRow
   const btg = ticker.find(row => row.symbol === 'BTG') || defaultRow
+  const bsv = ticker.find(row => row.symbol === 'BSV') || defaultRow
   const market_cap_usd = Number(btc.market_cap_usd)
     + Number(bch.market_cap_usd)
     + Number(btg.market_cap_usd)
+    + Number(bsv.market_cap_usd)
   btc.change = getChange(btc)
   bch.change = getChange(bch)
   btg.change = getChange(btg)
-  const price_usd = Number(btc.price_usd) + Number(bch.price_usd) + Number(btg.price_usd)
-  const change = btc.change + bch.change + btg.change
+  bsv.change = getChange(bsv)
+  const price_usd = Number(btc.price_usd) + Number(bch.price_usd) + Number(btg.price_usd) + Number(bsv.price_usd)
+  const change = btc.change + bch.change + btg.change + bsv.change
   const startPrice = price_usd - change
   const percentChange = ((change / startPrice) * 100).toFixed(2)
   return {
@@ -82,10 +85,6 @@ module.exports = function ($) {
         data.delta = ''
         data.change = '-'
       }
-      // avoid confusion between bitcoin and bcash
-      if (data.symbol === 'BCH') {
-        data.name = 'Bcash'
-      }
       $.ticker.push(data)
       // calculate bitcoin pre-fork values (i.e. casascius)
       if (data.symbol === 'BTC') {
@@ -93,7 +92,7 @@ module.exports = function ($) {
         $.ticker.push({
           rank: '',
           name: 'Bitcoin (Pre-fork)',
-          symbol: 'BTC_BCH_BTG',
+          symbol: 'BTC_BCH_BTG_BSV',
           price: btcPreFork.price_usd,
           priceFormatted: formatPrice(btcPreFork.price_usd),
           delta: btcPreFork.delta,
