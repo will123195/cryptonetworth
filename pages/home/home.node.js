@@ -102,4 +102,7 @@ module.exports = function ($) {
     })
     $.render()
   })
+  .catch(err => {
+    console.log(err)
+  })
 }
